@@ -6,5 +6,5 @@ file { '/etc/ssh/ssh_config':
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => template('./ssh_config.erb'),
+  content => "Host *\n  IdentityFile ~/.ssh/school\n  PasswordAuthentication no\n",
 }
