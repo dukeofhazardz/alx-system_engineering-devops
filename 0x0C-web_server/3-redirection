@@ -3,21 +3,20 @@
 # /redirect_me redirects to another page.
 # And the redirection is configured as a "301 Moved Permanently"
 
-apt-get update
-apt-get install -y nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
-mkdir /etc/nginx/html
-touch /etc/nginx/html/index.html
+sudo mkdir /etc/nginx/html
+sudo touch /etc/nginx/html/index.html
 
-echo "Hello World!" > /etc/nginx/html/index.html
-printf %s "server {
-	listen	80;
-	listen	[::]:80 default_server;
-	root	/etc/nginx/html;
-	index	index.html index.htm;
-	location	/redirect_me {
-	return	301 http://cuberule.com/;
-	}
-}">/etc/nginx/sites-available/default
+echo "Hello World!" | sudo tee /etc/nginx/html/index.html
+# printf %s "server {
+#        listen  80 default_server;
+#        listen  [::]:80 default_server;
+#        root    /etc/nginx/html;
+#        index   index.html index.htm;
+# }">/etc/nginx/sites-available/default
+redir="location /redirect_me {\nreturn 301 https://www.youtube.com/watch?v=AZg4uJkEa-4&feature=youtu.be&hd=1;\n}\n"
+sudo sed -i "30i $redir" /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service nginx restart
