@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# A bash script that installs and configures HAproxy on your lb-01 server.
+
+sudo apt -y update
+sudo apt install haproxy -y
+
+sudo echo -e "frontend haproxynode
+\tbind *:80
+\tmode http
+\tdefault_backend nodes" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+sudo echo -e "backend nodes
+\tmode http
+\tbalance roundrobin
+\toption forwardfor
+\thttp-request set-header X-Forwarded-Port %[dst_port]
+\tserver 178522-web-01 54.234.63.33 check
+\tserver 178522-web-02 18.234.193.44 check" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
