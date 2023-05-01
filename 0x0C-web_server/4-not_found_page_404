@@ -11,7 +11,7 @@ service nginx start
 redir="location /redirect_me {\nreturn 301 http://www.youtube.com/watch?v=AZg4uJkEa-4&feature=youtu.be&hd=1;\n}\n"
 sudo sed -i "30i $redir" /etc/nginx/sites-available/default
 echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
-redir2="error_page 404 /custom_404.html;\nlocation = /custom_404.html {\nroot /etc/nginx/html;\ninternal;\n}\n"
+redir2="error_page 404 /custom_404.html;\nlocation = /custom_404.html {\nroot /usr/share/nginx/html;\ninternal;\n}\n"
 sudo sed -i "30i $redir2" /etc/nginx/sites-available/default
 
 sudo service nginx restart
