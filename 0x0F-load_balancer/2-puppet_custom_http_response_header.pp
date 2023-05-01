@@ -4,7 +4,8 @@
 class { 'nginx': }
 
 # Define custom header
-file { '/etc/nginx/sites-available/default':
+# file { '/etc/nginx/sites-available/default':
+file { '/etc/nginx/conf.d/custom_headers.conf':
   ensure  => file,
   content => "add_header X-Served-By ${hostname};",
   mode    => '0644',
