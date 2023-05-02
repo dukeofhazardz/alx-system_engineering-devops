@@ -4,17 +4,37 @@
 sudo apt -y update
 sudo apt install haproxy -y
 
-sudo echo -e "frontend haproxynode
-\tbind *:80
-\tmode http
-\tdefault_backend nodes" | sudo tee -a /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" >> /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.original}
+touch /etc/haproxy/haproxy.cfg
 
-sudo echo -e "backend nodes
+sudo echo -e "global
+\tlog 127.0.0.1 local0 notice
+\tmaxconn 2000
+\tuser haproxy
+\tgroup haproxy
+
+defaults
+\tlog global
 \tmode http
+\toption httplog
+\toption dontlognull
+\tretries 3
+\toption redispatch
+\ttimeout connect 5000
+\ttimeout client 10000
+\ttimeout server 10000
+
+listen hbnb
+\tbind 0.0.0.0:80
+\tmode http
+\tstats enable
+\tstats uri /haproxy?stats
 \tbalance roundrobin
+\toption httpclose
 \toption forwardfor
 \thttp-request set-header X-Forwarded-Port %[dst_port]
-\tserver 178522-web-01 54.234.63.33 check
-\tserver 178522-web-02 18.234.193.44 check" | sudo tee -a /etc/haproxy/haproxy.cfg
+\tserver 178522-web-01 54.234.63.33:80 check
+\tserver 178522-web-02 18.234.193.44:80 check" | sudo tee -a /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
