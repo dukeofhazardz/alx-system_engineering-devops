@@ -9,7 +9,7 @@ package { 'nginx':
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
   content => "add_header X-Served-By ${hostname};"
-  match   => '^# custom headers$',
+  match   => '^#\s*$',
   mode    => '0644',
   owner   => 'root',
   group   => 'root',
