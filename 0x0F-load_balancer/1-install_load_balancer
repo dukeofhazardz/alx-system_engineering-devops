@@ -4,9 +4,9 @@
 sudo apt -y update
 sudo apt install haproxy -y
 
-echo "ENABLED=1" >> /etc/default/haproxy
-mv /etc/haproxy/haproxy.cfg{,.original}
-touch /etc/haproxy/haproxy.cfg
+sudo echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+sudo mv /etc/haproxy/haproxy.cfg{,.original}
+sudo touch /etc/haproxy/haproxy.cfg
 
 sudo echo -e "global
 \tlog 127.0.0.1 local0 notice
