@@ -20,4 +20,11 @@ file { '/etc/nginx/sites-available/default':
 service { 'nginx':
   ensure => running,
   enable => true,
+  notify  => Service['nginx'],
+}
+
+exec { 'restart-nginx':
+  command     => '/usr/sbin/service nginx restart',
+  refreshonly => true,
+  subscribe   => File['/etc/nginx/sites-available/default'],
 }
