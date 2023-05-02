@@ -7,12 +7,12 @@ package { 'nginx':
 
 # Define custom header
 file { '/etc/nginx/sites-available/default':
-  ensure  => file,
-  content => "add_header X-Served-By ${hostname};",
+  ensure  => present,
+  content => "add_header X-Served-By ${hostname};"
+  match   => '^# custom headers$',
   mode    => '0644',
   owner   => 'root',
   group   => 'root',
-  require => Class['nginx'],
   notify  => Service['nginx'],
 }
 
