@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# A Bash script that configures Ubuntu container’s Nginx installation on port 80 Issue
+ln -sf /etc/nginx/sites-enabled/default      /etc/nginx/sites-enabled/default     
+service nginx restart
+kill "$(pgrep 'nginx' | head -1)"
