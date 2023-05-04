@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# A Bash script that configures Ubuntu container’s Nginx installation on port 80 Issue
-
+# A Bash script that configures Nginx container installation on port 80
 file=/etc/nginx/sites-enabled/default
 rm $file
 ln -s $file $file
