@@ -5,7 +5,7 @@
 if [ $# -eq 0 ]; then
 	exit
 fi
-sites=("www" "lb-01" "web-01" "web-02")
+sites=("www" "178522-lb-01" "178522-web-01" "178522-web-02")
 if [ "$2" ]
 then
 	sites=("$2")
