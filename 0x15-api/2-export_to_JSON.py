@@ -20,7 +20,7 @@ if __name__ == "__main__":
                 "username": "{}".format(username)} for task in todos]
     }
 
-    with open('{}.json'.format(str(id)), 'w', newline='') as jsonfile:
+    with open('{}.json'.format(str(id)), 'w') as jsonfile:
         json.dump(e_dict, jsonfile)
 
     jsonfile.close()
