@@ -13,14 +13,11 @@ if __name__ == "__main__":
     todos = requests.get(url + "/todos", params={'userId': id}).json()
     username = user.get('username')
 
-    e_dict = {
-            "{}".format(id): [{
+    with open('{}.json'.format(str(id)), 'w') as jsonfile:
+        json.dump({id: [{
                 "task": "{}".format(task.get("title")),
                 "completed": "{}".format(task.get("completed")),
-                "username": "{}".format(username)} for task in todos]
-    }
-
-    with open('{}.json'.format(str(id)), 'w') as jsonfile:
-        json.dump(e_dict, jsonfile)
+                "username": username} for task in todos]
+            }, jsonfile)
 
     jsonfile.close()
