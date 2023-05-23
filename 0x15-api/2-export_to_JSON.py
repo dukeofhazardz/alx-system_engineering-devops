@@ -11,7 +11,6 @@ if __name__ == "__main__":
     url = 'https://jsonplaceholder.typicode.com'
     user = requests.get(url + "/users/{}".format(id)).json()
     todos = requests.get(url + "/todos", params={'userId': id}).json()
-
     username = user.get('username')
 
     e_dict = {
@@ -21,8 +20,7 @@ if __name__ == "__main__":
                 "username": "{}".format(username)} for task in todos]
     }
 
-    jsonf = json.dumps(e_dict)
     with open('{}.json'.format(str(id)), 'w', newline='') as jsonfile:
-        jsonfile.write(jsonf)
+        json.dump(e_dict, jsonf)
 
     jsonfile.close()
