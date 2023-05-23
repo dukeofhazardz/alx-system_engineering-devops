@@ -21,6 +21,6 @@ if __name__ == "__main__":
     }
 
     with open('{}.json'.format(str(id)), 'w', newline='') as jsonfile:
-        json.dump(e_dict, jsonf)
+        json.dump(e_dict, jsonfile)
 
     jsonfile.close()
