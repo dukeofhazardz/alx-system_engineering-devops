@@ -11,7 +11,7 @@ def count_words(subreddit, word_list, instances={}, after=None, times=0):
     """ A recursive function that queries the Reddit API and prints
         a sorted count of given keywords """
     try:
-        url = "https://api.reddit.com/r/{}/hot".format(subreddit)
+        url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
         headers = {
             "User-Agent": "linux:0x16.api.advanced:v1.0.0"
             }
@@ -40,9 +40,7 @@ def count_words(subreddit, word_list, instances={}, after=None, times=0):
                 print("")
                 return
             instances = sorted(instances.items(), key=lambda kv: (-kv[1], kv[0]))
-            for k, v in instances:
-                if v != 0:
-                    print("{}: {}".format(k, v))
+            [print("{}: {}".format(k, v)) for k, v in instances]
         else:
             count_words(subreddit, word_list, instances, after, times)
     except Exception:
