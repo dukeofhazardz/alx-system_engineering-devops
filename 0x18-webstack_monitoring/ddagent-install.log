@@ -1,64 +1,0 @@
-[34m
-* Datadog Agent 7 install script v1.17.0
-[0m
-[34m
-* Installing apt-transport-https, curl and gnupg
-[0m
-Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu jammy InRelease
-Hit:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
-Ign:5 https://download.docker.com/linux/debian jammy InRelease
-Hit:6 https://download.docker.com/linux/ubuntu jammy InRelease
-Hit:7 http://apt.postgresql.org/pub/repos/apt jammy-pgdg InRelease
-Err:8 https://download.docker.com/linux/debian jammy Release
-  404  Not Found [IP: 108.157.78.123 443]
-Hit:9 https://deb.nodesource.com/node_14.x jammy InRelease
-Ign:10 https://apt.datadoghq.com stable InRelease
-Hit:11 https://apt.datadoghq.com stable Release
-Reading package lists...
-E: The repository 'https://download.docker.com/linux/debian jammy Release' does not have a Release file.
-W: http://apt.postgresql.org/pub/repos/apt/dists/jammy-pgdg/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
-[31m'apt-get update' failed, the script will not install the latest version of apt-transport-https.[0m
-Reading package lists...
-Building dependency tree...
-Reading state information...
-curl is already the newest version (7.81.0-1ubuntu1.10).
-gnupg is already the newest version (2.2.27-3ubuntu2.1).
-apt-transport-https is already the newest version (2.4.9).
-0 upgraded, 0 newly installed, 0 to remove and 139 not upgraded.
-[34m
-* Installing APT package sources for Datadog
-[0m
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6226  100  6226    0     0   5668      0  0:00:01  0:00:01 --:--:--  5717100  6226  100  6226    0     0   5668      0  0:00:01  0:00:01 --:--:--  5717
-gpg: key 32637D44F14F620E: "Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>" not changed
-gpg: Total number processed: 1
-gpg:              unchanged: 1
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6226  100  6226    0     0  12040      0 --:--:-- --:--:-- --:--:-- 12065
-gpg: key 32637D44F14F620E: "Datadog, Inc. Master key (2020-09-08) <package+masterkey@datadoghq.com>" not changed
-gpg: Total number processed: 1
-gpg:              unchanged: 1
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  9001  100  9001    0     0  11154      0 --:--:-- --:--:-- --:--:-- 11153
-gpg: key D3A80E30382E94DE: "Datadog, Inc <package@datadoghq.com>" not changed
-gpg: Total number processed: 1
-gpg:              unchanged: 1
-Ign:1 https://apt.datadoghq.com stable InRelease
-Hit:2 https://apt.datadoghq.com stable Release
-Reading package lists...
-  [33mInstalling package(s): datadog-agent datadog-signing-keys
-[0m
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following NEW packages will be installed:
-  datadog-agent datadog-signing-keys
-0 upgraded, 2 newly installed, 0 to remove and 139 not upgraded.
-Need to get 378 MB/378 MB of archives.
-After this operation, 1188 MB of additional disk space will be used.
-Get:1 https://apt.datadoghq.com stable/7 amd64 datadog-agent amd64 1:7.45.0-1 [378 MB]
